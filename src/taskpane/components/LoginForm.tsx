@@ -22,6 +22,7 @@ export default class LoginForm extends React.Component<Props> {
           value={email}
           name="email"
           onChange={inputHandler}
+          type="email"
         />
         <TextField
           label="Your password"
@@ -29,6 +30,7 @@ export default class LoginForm extends React.Component<Props> {
           value={password}
           name="password"
           onChange={inputHandler}
+          type="password"
         />
 
         <Button
