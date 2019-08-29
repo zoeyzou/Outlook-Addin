@@ -1,3 +1,5 @@
+import { IDropdownOption } from 'office-ui-fabric-react'
+
 export type Expense = {
   merchant: string
   employee: string
@@ -5,6 +7,10 @@ export type Expense = {
     value: number
     currency: string
   }
+  team?: Team
+  category?: Category
+  note?: string
+  receipt?: any
 }
 
 export const expenseList: Expense[] = [
@@ -48,4 +54,30 @@ export const expenseList: Expense[] = [
       currency: 'DKK',
     },
   },
+]
+
+export enum Team {
+  Product = 'Product',
+  Sales = 'Sales',
+  CS = 'CS',
+  PeopleOps = 'PeopleOps',
+}
+
+export enum Category {
+  Travel = 'Travel',
+  Tools = 'Tools',
+  Food = 'Food',
+}
+
+export const teamOptions: IDropdownOption[] = [
+  { text: Team.Product, key: Team.Product },
+  { text: Team.Sales, key: Team.Sales },
+  { text: Team.CS, key: Team.CS },
+  { text: Team.PeopleOps, key: Team.PeopleOps },
+]
+
+export const categoryOptions: IDropdownOption[] = [
+  { text: Category.Travel, key: Category.Travel },
+  { text: Category.Tools, key: Category.Tools },
+  { text: Category.Food, key: Category.Food },
 ]
