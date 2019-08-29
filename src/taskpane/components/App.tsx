@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { Button, ButtonType } from 'office-ui-fabric-react'
+import { Button, ButtonType, TextField, Stack } from 'office-ui-fabric-react'
 import Header from './Header'
-import HeroList, { HeroListItem } from './HeroList'
 import Progress from './Progress'
 
 export interface AppProps {
@@ -10,40 +9,32 @@ export interface AppProps {
 }
 
 export interface AppState {
-  listItems: HeroListItem[]
+  email: string
+  password: string
 }
 
 export default class App extends React.Component<AppProps, AppState> {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      listItems: [],
+      email: '',
+      password: '',
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      listItems: [
-        {
-          icon: 'Ribbon',
-          primaryText: 'Achieve more with Office integration',
-        },
-        {
-          icon: 'Unlock',
-          primaryText: 'Unlock features and functionality',
-        },
-        {
-          icon: 'Design',
-          primaryText: 'Create and visualize like a pro',
-        },
-      ],
-    })
+  inputHandler = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue?: string
+  ) => {
+    if (event.currentTarget.name === 'email') {
+      this.setState({ email: newValue })
+    } else {
+      this.setState({ password: newValue })
+    }
   }
 
   click = async () => {
-    /**
-     * Insert your Outlook code here
-     */
+    console.log('something happened')
   }
 
   render() {
@@ -62,22 +53,33 @@ export default class App extends React.Component<AppProps, AppState> {
     return (
       <div className="ms-welcome">
         <Header logo="assets/logo-filled.png" title={this.props.title} message="Welcome" />
-        <HeroList
-          message="Discover what Office Add-ins can do for you today!"
-          items={this.state.listItems}
-        >
-          <p className="ms-font-l">
-            Modify the source files, then click <b>Run</b>.
-          </p>
+        <Stack tokens={{ childrenGap: 10, padding: 20 }}>
+          <TextField
+            label="Your Email"
+            iconProps={{ iconName: 'Mail' }}
+            value={this.state.email}
+            name="email"
+            onChange={this.inputHandler}
+          />
+          <TextField
+            label="Your password"
+            iconProps={{ iconName: 'Lock' }}
+            value={this.state.password}
+            name="password"
+            onChange={this.inputHandler}
+          />
+
           <Button
             className="ms-welcome__action"
-            buttonType={ButtonType.hero}
+            buttonType={ButtonType.default}
             iconProps={{ iconName: 'ChevronRight' }}
             onClick={this.click}
+            style={{ borderRadius: '22px', marginTop: '40px' }}
           >
-            Run
+            Login
           </Button>
-        </HeroList>
+        </Stack>
+        {/* </HeroList> */}
       </div>
     )
   }
