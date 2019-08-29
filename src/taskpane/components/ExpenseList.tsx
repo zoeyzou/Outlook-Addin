@@ -11,7 +11,7 @@ export default class ExpenseList extends React.Component<Props> {
   render() {
     const { expenseList } = this.props
     if (!expenseList) {
-      return <h4 style={{ padding: '20px' }}>"Great, there's no expense that misses Receipt!"</h4>
+      return <h4 style={{ margin: '20px' }}>"Great, there's no expense that misses Receipt!"</h4>
     }
 
     return (
