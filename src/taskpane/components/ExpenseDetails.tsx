@@ -10,18 +10,6 @@ export default class ExpenseDetails extends React.Component<Props> {
       <Stack tokens={{ childrenGap: 10, padding: 20 }}>
         <Stack.Item styles={{ root: { display: 'flex', width: '100%' } }}>
           <Icon
-            iconName="People"
-            title="People"
-            styles={{ root: { fontSize: '20px', margin: '0 5px' } }}
-          />
-          <Dropdown
-            options={teamOptions}
-            styles={{ root: { width: '100%' } }}
-            placeHolder={'Choose a team'}
-          />
-        </Stack.Item>
-        <Stack.Item styles={{ root: { display: 'flex', width: '100%' } }}>
-          <Icon
             iconName="AllApps"
             title="Category"
             styles={{ root: { fontSize: '20px', margin: '0 5px' } }}
