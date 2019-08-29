@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { Button, ButtonType, TextField, Stack } from 'office-ui-fabric-react'
 import Header from './Header'
 import Progress from './Progress'
+import LoginForm from './LoginForm'
+import ExpenseList from './ExpenseList'
+import { Expense, expenseList } from '../helpers/expenses'
 
 export interface AppProps {
   title: string
@@ -11,6 +13,9 @@ export interface AppProps {
 export interface AppState {
   email: string
   password: string
+  loading: boolean
+  isLoggedIn: boolean
+  expenseList: Expense[] | null
 }
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -19,6 +24,9 @@ export default class App extends React.Component<AppProps, AppState> {
     this.state = {
       email: '',
       password: '',
+      loading: false,
+      isLoggedIn: false,
+      expenseList: null,
     }
   }
 
@@ -33,53 +41,45 @@ export default class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  click = async () => {
-    console.log('something happened')
+  onSubmit = async () => {
+    this.setState({ loading: true })
+    setTimeout(() => this.setState({ loading: false, isLoggedIn: true }), 3000)
   }
 
   render() {
-    const { title, isOfficeInitialized } = this.props
+    const { isOfficeInitialized } = this.props
+    const { email, password, loading, isLoggedIn } = this.state
 
-    if (!isOfficeInitialized) {
+    if (!isOfficeInitialized || loading) {
       return (
-        <Progress
-          title={title}
-          logo="assets/logo-filled.png"
-          message="Please sideload your addin to see app body."
-        />
+        <div className="ms-welcome">
+          <Header
+            logo="assets/logo-filled.png"
+            title={this.props.title}
+            message={isLoggedIn ? `Howdy, Zoey` : 'Welcome'}
+          />
+          <Progress message="Patiently wait for the expenses to come in" />
+        </div>
       )
     }
 
     return (
       <div className="ms-welcome">
-        <Header logo="assets/logo-filled.png" title={this.props.title} message="Welcome" />
-        <Stack tokens={{ childrenGap: 10, padding: 20 }}>
-          <TextField
-            label="Your Email"
-            iconProps={{ iconName: 'Mail' }}
-            value={this.state.email}
-            name="email"
-            onChange={this.inputHandler}
+        <Header
+          logo="assets/logo-filled.png"
+          title={this.props.title}
+          message={isLoggedIn ? `Howdy, Zoey` : 'Welcome'}
+        />
+        {!isLoggedIn ? (
+          <LoginForm
+            email={email}
+            password={password}
+            inputHandler={this.inputHandler}
+            formHandler={this.onSubmit}
           />
-          <TextField
-            label="Your password"
-            iconProps={{ iconName: 'Lock' }}
-            value={this.state.password}
-            name="password"
-            onChange={this.inputHandler}
-          />
-
-          <Button
-            className="ms-welcome__action"
-            buttonType={ButtonType.default}
-            iconProps={{ iconName: 'ChevronRight' }}
-            onClick={this.click}
-            style={{ borderRadius: '22px', marginTop: '40px' }}
-          >
-            Login
-          </Button>
-        </Stack>
-        {/* </HeroList> */}
+        ) : (
+          <ExpenseList expenseList={expenseList.filter(expense => expense.employee === 'Zoey')} />
+        )}
       </div>
     )
   }
