@@ -14,7 +14,11 @@ export default class ExpenseDetails extends React.Component<Props> {
             title="People"
             styles={{ root: { fontSize: '20px', margin: '0 5px' } }}
           />
-          <Dropdown options={teamOptions} styles={{ root: { width: '100%' } }} />
+          <Dropdown
+            options={teamOptions}
+            styles={{ root: { width: '100%' } }}
+            placeHolder={'Choose a team'}
+          />
         </Stack.Item>
         <Stack.Item styles={{ root: { display: 'flex', width: '100%' } }}>
           <Icon
@@ -22,7 +26,11 @@ export default class ExpenseDetails extends React.Component<Props> {
             title="Category"
             styles={{ root: { fontSize: '20px', margin: '0 5px' } }}
           />
-          <Dropdown options={categoryOptions} styles={{ root: { width: '100%' } }} />
+          <Dropdown
+            options={categoryOptions}
+            styles={{ root: { width: '100%' } }}
+            placeHolder={'Choose a category'}
+          />
         </Stack.Item>
         <Stack.Item styles={{ root: { display: 'flex', width: '100%' } }}>
           <Icon
@@ -30,7 +38,7 @@ export default class ExpenseDetails extends React.Component<Props> {
             title="Notes"
             styles={{ root: { fontSize: '20px', margin: '0 5px' } }}
           />
-          <TextField multiline styles={{ root: { width: '100%' } }} />
+          <TextField multiline styles={{ root: { width: '100%' } }} placeholder={'Leave a note'} />
         </Stack.Item>
         <Stack.Item styles={{ root: { display: 'flex', width: '100%' } }}>
           <Icon
