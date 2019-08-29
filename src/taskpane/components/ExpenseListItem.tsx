@@ -45,7 +45,7 @@ export default class ExpenselistItem extends React.Component<Props, State> {
             </div>
             <div style={{ display: 'flex', flexFlow: 'column' }}>
               <h5>{expense.merchant}</h5>
-              <p>{expense.employee}</p>
+              <p style={{ marginBottom: 0 }}>{expense.employee}</p>
             </div>
           </div>
           <div>
