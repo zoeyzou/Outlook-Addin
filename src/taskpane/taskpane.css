@@ -78,3 +78,16 @@
 b {
     font-weight: bold;
 }
+
+.listItemWrapper {
+    cursor: pointer;
+    display: flex;
+    justifyContent: space-between;
+    padding: 20px;
+    transition: all .2s ease-in;
+}
+
+.listItemWrapper:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all .2s ease-in;
+}
