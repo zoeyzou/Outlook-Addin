@@ -83,11 +83,33 @@ b {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     transition: all .2s ease-in;
 }
 
 .listItemWrapper:hover {
     background: rgba(0, 0, 0, 0.1);
+    transition: all .2s ease-in;
+}
+
+.attachmentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 180px;
+    border: 1px dashed navy;
+    transition: all .2s ease-in;
+}
+
+.attachmentWrapper.enabled {
+
+    height: 80px;
+}
+
+.attachmentWrapper.enabled:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
     transition: all .2s ease-in;
 }
