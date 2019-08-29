@@ -1,4 +1,4 @@
-type Expense = {
+export type Expense = {
   merchant: string
   employee: string
   amount: {
@@ -7,7 +7,7 @@ type Expense = {
   }
 }
 
-export const ExpenseList: Expense[] = [
+export const expenseList: Expense[] = [
   {
     merchant: 'Walmart',
     employee: 'Zoey',
