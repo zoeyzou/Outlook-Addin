@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { teamOptions, categoryOptions } from '../helpers/expenses'
+import { categoryOptions } from '../helpers/expenses'
 import { Stack, Dropdown, Icon, TextField, IconButton } from 'office-ui-fabric-react'
 
 interface Props {}
