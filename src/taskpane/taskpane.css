@@ -82,7 +82,7 @@ b {
 .listItemWrapper {
     cursor: pointer;
     display: flex;
-    justifyContent: space-between;
+    justify-content: space-between;
     padding: 20px;
     transition: all .2s ease-in;
 }
